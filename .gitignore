@@ -1,0 +1,6 @@
+tile_data/*
+!tile_data/valhalla.json
+
+!service_data/valhalla.json
+service_data/tiles/*
+!service_data/tiles/ 

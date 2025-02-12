@@ -1,0 +1,31 @@
+networks:
+  valhalla_curler:
+
+services:
+  valhalla_service:
+    container_name: valhalla_service
+    build:
+      context: .
+    volumes: 
+      - ./service_data/:/data
+    networks:
+      - valhalla_curler 
+    ports:
+      - 8002:8002
+  tile_service: 
+    container_name: tile_service
+    image: halverneus/static-file-server:latest
+    volumes: 
+      - ./tile_data/tiles:/web
+    networks:
+      - valhalla_curler
+    ports:
+      - 8080:8080
+  valhalla_build_tiles:
+    profiles: 
+      - tilebuild
+    command: build_tiles
+    build:
+      context: .
+    volumes: 
+      - ./tile_data/:/data
