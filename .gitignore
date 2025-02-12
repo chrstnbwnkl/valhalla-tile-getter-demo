@@ -1,5 +1,6 @@
 tile_data/*
 !tile_data/valhalla.json
+!tile_data/map.pbf
 
 !service_data/valhalla.json
 service_data/tiles/*
